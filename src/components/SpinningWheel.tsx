@@ -82,11 +82,11 @@ const SpinningWheel: React.FC<SpinningWheelProps> = ({ holidays }) => {
               background: `conic-gradient(#3498db 0 50%, #e74c3c 50% 100%)`
             }}
           >
-            {/* labels at 25% and 75% */}
-            <span className="wheel-label" style={{ transform: 'rotate(90deg) translate(0, -100px)', transformOrigin: 'center center' }}>
+            {/* labels at 25% and 75% - using min() for responsive positioning */}
+            <span className="wheel-label" style={{ transform: 'rotate(90deg) translate(0, min(-33%, -80px))', transformOrigin: 'center center' }}>
               {truncateText(holidays[0].name)}
             </span>
-            <span className="wheel-label" style={{ transform: 'rotate(270deg) translate(0, -100px)', transformOrigin: 'center center' }}>
+            <span className="wheel-label" style={{ transform: 'rotate(270deg) translate(0, min(-33%, -80px))', transformOrigin: 'center center' }}>
               {truncateText(holidays[1].name)}
             </span>
           </div>
@@ -148,14 +148,13 @@ const SpinningWheel: React.FC<SpinningWheelProps> = ({ holidays }) => {
           {holidays.map((holiday, index) => {
             // Calculate the middle angle of each segment for label positioning
             const middleAngle = (index * anglePerSegment) + (anglePerSegment / 2);
-            const radius = 100; // Distance from center to place the label
             
             return (
               <span
                 key={holiday.id}
                 className="wheel-label-multi"
                 style={{
-                  transform: `rotate(${middleAngle}deg) translate(0, -${radius}px)`,
+                  transform: `rotate(${middleAngle}deg) translate(0, min(-33%, -80px))`,
                   transformOrigin: 'center center'
                 }}
               >

@@ -11,7 +11,7 @@ function App() {
     <div className="app">
       <header className="app-header">
         <h1 className="app-title">
-          🌴 Holiday Destination Spinner 🌴
+          Wheel Of Holidays
         </h1>
         <p className="app-subtitle">
           ✈️ Create your dream destinations and spin to win! 🏖️
