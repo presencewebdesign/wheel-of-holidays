@@ -30,13 +30,13 @@ const SpinningWheel: React.FC<SpinningWheelProps> = ({ holidays }) => {
     }
 
     // Calculate which holiday was selected
-    // The pointer is at the top (0 degrees), so we need to find which segment is under it
+    // The pointer is at the bottom (180 degrees), so we need to find which segment is under it
     const anglePerHoliday = 360 / holidays.length;
     const normalizedAngle = randomRotation % 360;
     
-    // Adjust for pointer at top (0 degrees) - the wheel rotates clockwise
-    // We need to find which segment's range includes 0 degrees after rotation
-    const pointerAngle = (360 - normalizedAngle) % 360;
+    // Adjust for pointer at bottom (180 degrees) - the wheel rotates clockwise
+    // We need to find which segment's range includes 180 degrees after rotation
+    const pointerAngle = (180 - normalizedAngle + 360) % 360;
     const selectedIndex = Math.floor(pointerAngle / anglePerHoliday) % holidays.length;
 
     setTimeout(() => {
@@ -79,14 +79,14 @@ const SpinningWheel: React.FC<SpinningWheelProps> = ({ holidays }) => {
             ref={wheelRef}
             className={`wheel ${isSpinning ? 'spinning' : ''}`}
             style={{
-              background: `conic-gradient(${holidays[0].color} 0 50%, ${holidays[1].color} 50% 100%)`
+              background: `conic-gradient(from 180deg, ${holidays[0].color} 0 50%, ${holidays[1].color} 50% 100%)`
             }}
           >
-            {/* labels at 25% and 75% - using min() for responsive positioning */}
-            <span className="wheel-label" style={{ transform: 'rotate(90deg) translate(0, min(-33%, -80px))', transformOrigin: 'center center' }}>
+            {/* labels at 25% and 75% - better centered positioning */}
+            <span className="wheel-label" style={{ transform: 'rotate(90deg) translate(0, min(-25%, -60px))', transformOrigin: 'center center' }}>
               {truncateText(holidays[0].name)}
             </span>
-            <span className="wheel-label" style={{ transform: 'rotate(270deg) translate(0, min(-33%, -80px))', transformOrigin: 'center center' }}>
+            <span className="wheel-label" style={{ transform: 'rotate(270deg) translate(0, min(-25%, -60px))', transformOrigin: 'center center' }}>
               {truncateText(holidays[1].name)}
             </span>
           </div>
@@ -140,7 +140,7 @@ const SpinningWheel: React.FC<SpinningWheelProps> = ({ holidays }) => {
           ref={wheelRef}
           className={`wheel ${isSpinning ? 'spinning' : ''}`}
           style={{
-            background: `conic-gradient(from 0deg, ${conicGradientStops})`
+            background: `conic-gradient(from 180deg, ${conicGradientStops})`
           }}
         >
           {holidays.map((holiday, index) => {
@@ -152,7 +152,7 @@ const SpinningWheel: React.FC<SpinningWheelProps> = ({ holidays }) => {
                 key={holiday.id}
                 className="wheel-label-multi"
                 style={{
-                  transform: `rotate(${middleAngle}deg) translate(0, min(-33%, -80px))`,
+                  transform: `rotate(${middleAngle}deg) translate(0, min(-25%, -60px))`,
                   transformOrigin: 'center center'
                 }}
               >

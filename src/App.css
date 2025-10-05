@@ -366,16 +366,16 @@ body::after {
 
 .wheel-pointer {
   position: absolute;
-  top: -2px; /* place tip exactly at wheel edge */
+  top: 0px; 
   left: 50%;
   transform: translateX(-50%);
   width: 0;
   height: 0;
   border-left: min(1.4vw, 14px) solid transparent;
   border-right: min(1.4vw, 14px) solid transparent;
-  border-bottom: min(2.6vw, 26px) solid #f4c430; /* golden pointer */
+  border-top: min(2.6vw, 26px) solid #000; /* black pointer pointing up */
   z-index: 10;
-  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.4)) drop-shadow(0 0 8px rgba(244, 196, 48, 0.7));
+  filter: drop-shadow(0 -2px 3px rgba(0, 0, 0, 0.2)) drop-shadow(0 0 8px rgba(0, 0, 0, 0.7));
 }
 
 .wheel {
