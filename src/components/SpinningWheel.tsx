@@ -56,8 +56,14 @@ const SpinningWheel: React.FC<SpinningWheelProps> = ({ holidays }) => {
     return (
       <div className="wheel-container">
         <div className="wheel-placeholder">
-          <h3>🎯 Add at least two destinations</h3>
-          <p>Enter destination names above. The wheel needs 2+ to spin (2 = 50/50).</p>
+          <div className="placeholder-icon">⚠️</div>
+          <h3>Add at least 2 destinations to spin the wheel!</h3>
+          <p className="placeholder-instruction">
+            👆 Enter destination names in the form above
+          </p>
+          <p className="placeholder-hint">
+            (2 destinations = 50/50 choice)
+          </p>
         </div>
       </div>
     );
