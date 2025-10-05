@@ -79,7 +79,7 @@ const SpinningWheel: React.FC<SpinningWheelProps> = ({ holidays }) => {
             ref={wheelRef}
             className={`wheel ${isSpinning ? 'spinning' : ''}`}
             style={{
-              background: `conic-gradient(#3498db 0 50%, #e74c3c 50% 100%)`
+              background: `conic-gradient(${holidays[0].color} 0 50%, ${holidays[1].color} 50% 100%)`
             }}
           >
             {/* labels at 25% and 75% - using min() for responsive positioning */}
@@ -125,13 +125,11 @@ const SpinningWheel: React.FC<SpinningWheelProps> = ({ holidays }) => {
 
   // Generate conic gradient for multiple segments
   const anglePerSegment = 360 / holidays.length;
-  const colors = ['#3498db', '#e74c3c', '#2ecc71', '#f39c12', '#9b59b6', '#1abc9c'];
   
-  const conicGradientStops = holidays.map((_, index) => {
+  const conicGradientStops = holidays.map((holiday, index) => {
     const startAngle = index * anglePerSegment;
     const endAngle = (index + 1) * anglePerSegment;
-    const color = colors[index % colors.length];
-    return `${color} ${startAngle}deg ${endAngle}deg`;
+    return `${holiday.color} ${startAngle}deg ${endAngle}deg`;
   }).join(', ');
 
   return (

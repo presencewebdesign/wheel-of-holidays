@@ -1,6 +1,7 @@
 export interface Holiday {
   id: string;
   name: string;
+  color: string;
   createdAt: Date;
 }
 

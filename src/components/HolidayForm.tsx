@@ -6,14 +6,20 @@ interface HolidayFormProps {
   holidays: Holiday[];
 }
 
+// Wheel colors that match the spinning wheel
+const WHEEL_COLORS = ['#3498db', '#e74c3c', '#2ecc71', '#f39c12', '#9b59b6', '#1abc9c'];
+
 const HolidayForm: React.FC<HolidayFormProps> = ({ onHolidaysChange, holidays }) => {
   const [holidayName, setHolidayName] = useState('');
 
   const addHoliday = () => {
     if (holidayName.trim()) {
+      // Assign color based on current index
+      const colorIndex = holidays.length % WHEEL_COLORS.length;
       const newHoliday: Holiday = {
         id: Date.now().toString(),
         name: holidayName.trim(),
+        color: WHEEL_COLORS[colorIndex],
         createdAt: new Date()
       };
       onHolidaysChange([...holidays, newHoliday]);
@@ -51,7 +57,13 @@ const HolidayForm: React.FC<HolidayFormProps> = ({ onHolidaysChange, holidays })
 
       <div className="holidays-list">
         {holidays.map((holiday) => (
-          <div key={holiday.id} className="holiday-item">
+          <div 
+            key={holiday.id} 
+            className="holiday-item"
+            style={{ 
+              background: `linear-gradient(45deg, ${holiday.color}, ${holiday.color}dd)`,
+            }}
+          >
             <span className="holiday-name">🌴 {holiday.name}</span>
             <button 
               onClick={() => removeHoliday(holiday.id)}
