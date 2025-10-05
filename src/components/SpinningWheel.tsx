@@ -22,10 +22,22 @@ const SpinningWheel: React.FC<SpinningWheelProps> = ({ holidays }) => {
     setIsSpinning(true);
     setSelectedHoliday(null);
 
-    // Calculate random rotation (multiple full rotations + random angle)
-    const randomRotation = Math.random() * 360 + 1800; // 5+ full rotations
+    // Calculate random rotation (variable full rotations + random angle)
+    // Always calculate from 0deg to ensure full spin, then add 180deg for upside-down wheel
+    const baseRotations = Math.floor(Math.random() * 8) + 5; // 5-12 full rotations
+    const randomAngle = Math.random() * 360; // 0-360 degrees
+    const randomRotation = (baseRotations * 360) + randomAngle + 180; // Variable spins + random angle + 180deg offset
     
     if (wheelRef.current) {
+      // First reset to 0deg without transition, then apply full rotation with transition
+      wheelRef.current.style.transition = 'none';
+      wheelRef.current.style.transform = 'rotate(0deg)';
+      
+      // Force a reflow to ensure the reset is applied
+      wheelRef.current.offsetHeight;
+      
+      // Now apply the full rotation with transition
+      wheelRef.current.style.transition = 'transform 3s cubic-bezier(0.23, 1, 0.32, 1)';
       wheelRef.current.style.transform = `rotate(${randomRotation}deg)`;
     }
 
@@ -47,7 +59,7 @@ const SpinningWheel: React.FC<SpinningWheelProps> = ({ holidays }) => {
 
   const resetWheel = () => {
     if (wheelRef.current) {
-      wheelRef.current.style.transform = 'rotate(0deg)';
+      wheelRef.current.style.transform = 'rotate(180deg)';
     }
     setSelectedHoliday(null);
   };
