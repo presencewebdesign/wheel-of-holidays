@@ -282,13 +282,15 @@ body::after {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   background: rgba(255, 255, 255, 0.95);
-  padding: 2rem;
+  padding: 1.5rem;
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 0 0 6px rgba(255,255,255,0.5) inset;
   backdrop-filter: blur(10px);
   border: 3px solid #fff;
   position: relative;
+  width: 100%;
 }
 /* Removed spinning outer ring - was distracting */
 
@@ -354,7 +356,12 @@ body::after {
 
 .wheel-wrapper {
   position: relative;
-  margin-bottom: 2rem;
+  margin: 0 auto 2rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 100%;
 }
 
 .wheel-pointer {
@@ -364,24 +371,26 @@ body::after {
   transform: translateX(-50%);
   width: 0;
   height: 0;
-  border-left: 14px solid transparent;
-  border-right: 14px solid transparent;
-  border-bottom: 26px solid #f4c430; /* golden pointer */
+  border-left: min(1.4vw, 14px) solid transparent;
+  border-right: min(1.4vw, 14px) solid transparent;
+  border-bottom: min(2.6vw, 26px) solid #f4c430; /* golden pointer */
   z-index: 10;
   filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.4)) drop-shadow(0 0 8px rgba(244, 196, 48, 0.7));
 }
 
 .wheel {
-  width: 300px;
-  height: 300px;
+  width: min(85vw, 350px);
+  aspect-ratio: 1;
+  max-width: calc(100% - 2rem);
   border-radius: 50%;
   position: relative;
-  border: 10px solid #fff;
+  border: min(0.8vw, 8px) solid #fff;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.25), 
               0 0 60px rgba(6, 190, 182, 0.2),
               inset 0 0 20px rgba(0, 0, 0, 0.1);
   transition: transform 3s cubic-bezier(0.23, 1, 0.32, 1);
   overflow: hidden;
+  margin: 0 auto;
 }
 
 /* Labels for two-segment wheel */
@@ -562,19 +571,43 @@ body::after {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
-  .app-content {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-  
-  .app-title {
-    font-size: 2.2rem;
+
+/* Desktop and Large Tablets */
+@media (min-width: 1024px) {
+  .wheel-container {
+    padding: 2rem;
   }
   
   .wheel {
-    width: 250px;
-    height: 250px;
+    width: min(80vw, 400px);
+    aspect-ratio: 1;
+  }
+  
+  .wheel-controls {
+    gap: 1.5rem;
+  }
+  
+  .spin-button {
+    padding: 1.2rem 2.5rem;
+    font-size: 1.3rem;
+  }
+}
+
+/* Tablets */
+@media (max-width: 1023px) and (min-width: 769px) {
+  .app-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 800px;
+  }
+  
+  .wheel-container {
+    padding: 1.8rem;
+  }
+  
+  .wheel {
+    width: min(85vw, 380px);
+    aspect-ratio: 1;
   }
   
   .wheel-label {
@@ -587,16 +620,52 @@ body::after {
   }
   
   .wheel-label-multi {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     font-weight: 800;
     text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
     background: rgba(0, 0, 0, 0.3);
     padding: 2px 6px;
     border-radius: 4px;
   }
+}
+
+/* Mobile Landscape and Small Tablets */
+@media (max-width: 768px) {
+  .app-content {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 1rem;
+  }
   
-  .segment-text {
+  .app-title {
+    font-size: 2.2rem;
+  }
+  
+  .wheel-container {
+    padding: 1.5rem;
+  }
+  
+  .wheel {
+    width: min(90vw, 320px);
+    aspect-ratio: 1;
+  }
+  
+  .wheel-label {
+    font-size: 0.95rem;
+    font-weight: 800;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.3);
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+  
+  .wheel-label-multi {
     font-size: 0.8rem;
+    font-weight: 800;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.3);
+    padding: 2px 6px;
+    border-radius: 4px;
   }
   
   .input-group {
@@ -616,19 +685,27 @@ body::after {
   }
 }
 
+/* Mobile Portrait */
 @media (max-width: 480px) {
+  .app-main {
+    padding: 1rem;
+  }
+  
   .app-title {
     font-size: 1.8rem;
   }
   
+  .wheel-container {
+    padding: 1rem;
+  }
+  
   .wheel {
-    width: 200px;
-    height: 200px;
-    border: 6px solid #fff;
+    width: min(90vw, 300px);
+    aspect-ratio: 1;
   }
   
   .wheel-label {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 900;
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9), 
                  2px 2px 8px rgba(0, 0, 0, 0.7);
@@ -645,6 +722,21 @@ body::after {
     background: rgba(0, 0, 0, 0.4);
     padding: 1px 4px;
     border-radius: 3px;
+  }
+  
+  .wheel-controls {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  
+  .spin-button {
+    padding: 1rem 1.5rem;
+    font-size: 1.1rem;
+  }
+  
+  .reset-button {
+    padding: 0.8rem 1.2rem;
+    font-size: 1rem;
   }
   
   .placeholder-icon {
