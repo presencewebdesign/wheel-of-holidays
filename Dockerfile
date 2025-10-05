@@ -30,6 +30,6 @@ COPY --from=builder /app/dist ./dist
 ENV PORT=8080
 EXPOSE 8080
 
-# Start the server
-CMD serve -s dist -l $PORT
+# Start the server on 0.0.0.0 to accept connections from Cloud Run
+CMD serve -s dist -l tcp://0.0.0.0:$PORT
 

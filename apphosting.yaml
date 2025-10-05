@@ -10,6 +10,9 @@ runConfig:
   concurrency: 80
 
 env:
-  # You can add environment variables here if needed
+  # Set NODE_ENV to production only at runtime (not during build)
+  # This allows devDependencies (like TypeScript and Vite) to be installed during build
   - variable: NODE_ENV
     value: production
+    availability:
+      - RUNTIME
