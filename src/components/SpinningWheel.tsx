@@ -10,6 +10,12 @@ const SpinningWheel: React.FC<SpinningWheelProps> = ({ holidays }) => {
   const [selectedHoliday, setSelectedHoliday] = useState<Holiday | null>(null);
   const wheelRef = useRef<HTMLDivElement>(null);
 
+  // Truncate text to max 6 characters for display on wheel
+  const truncateText = (text: string, maxLength: number = 6): string => {
+    if (text.length <= maxLength) return text;
+    return text.substring(0, maxLength) + '..';
+  };
+
   const spinWheel = () => {
     if (holidays.length < 2 || isSpinning) return;
 
@@ -71,11 +77,11 @@ const SpinningWheel: React.FC<SpinningWheelProps> = ({ holidays }) => {
             }}
           >
             {/* labels at 25% and 75% */}
-            <span className="wheel-label" style={{ transform: 'rotate(45deg) translate(95px) rotate(-45deg)' }}>
-              {holidays[0].name}
+            <span className="wheel-label" style={{ transform: 'rotate(90deg) translate(0, -100px)', transformOrigin: 'center center' }}>
+              {truncateText(holidays[0].name)}
             </span>
-            <span className="wheel-label" style={{ transform: 'rotate(225deg) translate(95px) rotate(-225deg)' }}>
-              {holidays[1].name}
+            <span className="wheel-label" style={{ transform: 'rotate(270deg) translate(0, -100px)', transformOrigin: 'center center' }}>
+              {truncateText(holidays[1].name)}
             </span>
           </div>
         </div>
@@ -136,17 +142,18 @@ const SpinningWheel: React.FC<SpinningWheelProps> = ({ holidays }) => {
           {holidays.map((holiday, index) => {
             // Calculate the middle angle of each segment for label positioning
             const middleAngle = (index * anglePerSegment) + (anglePerSegment / 2);
-            const radius = 95; // Distance from center to place the label
+            const radius = 100; // Distance from center to place the label
             
             return (
               <span
                 key={holiday.id}
                 className="wheel-label-multi"
                 style={{
-                  transform: `rotate(${middleAngle}deg) translate(${radius}px) rotate(-${middleAngle}deg)`
+                  transform: `rotate(${middleAngle}deg) translate(0, -${radius}px)`,
+                  transformOrigin: 'center center'
                 }}
               >
-                {holiday.name}
+                {truncateText(holiday.name)}
               </span>
             );
           })}

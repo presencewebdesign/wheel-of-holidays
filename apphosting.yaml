@@ -1,0 +1,15 @@
+runConfig:
+  # Minimum number of instances (0 = scale to zero when not in use)
+  minInstances: 0
+  # Maximum number of instances
+  maxInstances: 4
+  # CPU and memory allocation
+  cpu: 1
+  memoryMiB: 512
+  # Concurrency (number of requests per instance)
+  concurrency: 80
+
+env:
+  # You can add environment variables here if needed
+  - variable: NODE_ENV
+    value: production
