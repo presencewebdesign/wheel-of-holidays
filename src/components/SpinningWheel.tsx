@@ -30,11 +30,11 @@ const SpinningWheel: React.FC<SpinningWheelProps> = ({ holidays }) => {
     }
 
     // Calculate which holiday was selected
-    // The pointer is at the bottom (180 degrees), so we need to find which segment is under it
+    // The wheel is upside down (starts from 180deg), so the pointer is at 180deg from wheel's perspective
     const anglePerHoliday = 360 / holidays.length;
     const normalizedAngle = randomRotation % 360;
     
-    // Adjust for pointer at bottom (180 degrees) - the wheel rotates clockwise
+    // Adjust for pointer at 180 degrees (bottom of upside-down wheel)
     // We need to find which segment's range includes 180 degrees after rotation
     const pointerAngle = (180 - normalizedAngle + 360) % 360;
     const selectedIndex = Math.floor(pointerAngle / anglePerHoliday) % holidays.length;
@@ -82,11 +82,11 @@ const SpinningWheel: React.FC<SpinningWheelProps> = ({ holidays }) => {
               background: `conic-gradient(from 180deg, ${holidays[0].color} 0 50%, ${holidays[1].color} 50% 100%)`
             }}
           >
-            {/* labels at 25% and 75% - better centered positioning */}
-            <span className="wheel-label" style={{ transform: 'rotate(90deg) translate(0, min(-25%, -60px))', transformOrigin: 'center center' }}>
+            {/* labels positioned over their correct colors */}
+            <span className="wheel-label" style={{ transform: 'rotate(270deg) translate(0, min(-25%, -60px))', transformOrigin: 'center center' }}>
               {truncateText(holidays[0].name)}
             </span>
-            <span className="wheel-label" style={{ transform: 'rotate(270deg) translate(0, min(-25%, -60px))', transformOrigin: 'center center' }}>
+            <span className="wheel-label" style={{ transform: 'rotate(90deg) translate(0, min(-25%, -60px))', transformOrigin: 'center center' }}>
               {truncateText(holidays[1].name)}
             </span>
           </div>
@@ -145,7 +145,8 @@ const SpinningWheel: React.FC<SpinningWheelProps> = ({ holidays }) => {
         >
           {holidays.map((holiday, index) => {
             // Calculate the middle angle of each segment for label positioning
-            const middleAngle = (index * anglePerSegment) + (anglePerSegment / 2);
+            // Since wheel starts from 180deg, adjust the angle calculation
+            const middleAngle = 180 + (index * anglePerSegment) + (anglePerSegment / 2);
             
             return (
               <span
