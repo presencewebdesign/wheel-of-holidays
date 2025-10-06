@@ -4,7 +4,8 @@ A fun, interactive holiday picker app built with React, Vite, and Firebase! Crea
 
 ## 🌐 Live Demo
 
-**[Try it out live!](https://wheel-of-holidays.web.app/)** 🎉
+**[Try it out live!](https://wheel-of-holidays.web.app/)** 🎉  
+_(Right-click and "Open in new tab" for best experience)_
 
 Experience the holiday picker wheel in action - add your dream destinations and spin to win!
 
