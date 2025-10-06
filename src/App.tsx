@@ -30,10 +30,6 @@ function App() {
           </div>
         </Suspense>
       </main>
-
-      <footer className="app-footer">
-        <p>🌴 Made with ❤️ for your dream vacation! 🌊</p>
-      </footer>
     </div>
   );
 }

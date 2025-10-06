@@ -8,7 +8,7 @@
 body {
   font-family: 'Segoe UI', 'Trebuchet MS', 'Arial', sans-serif;
   background: linear-gradient(135deg, #FF6B9D, #4ECDC4, #45B7D1, #06BEB6);
-  background-size: 400% 400%;
+  background-size: 100%;
   animation: gradientShift 15s ease infinite;
   min-height: 100vh;
   position: relative;

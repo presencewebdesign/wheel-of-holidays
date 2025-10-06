@@ -129,8 +129,4 @@ firebase deploy
 
 MIT License - feel free to use this project for your own holiday fun!
 
----
-
-🎄 Made with ❤️ for holiday fun! 🎄
-
 # wheel-of-holidays
