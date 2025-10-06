@@ -34,7 +34,7 @@ const SpinningWheel: React.FC<SpinningWheelProps> = ({ holidays }) => {
       wheelRef.current.style.transform = 'rotate(0deg)';
       
       // Force a reflow to ensure the reset is applied
-      wheelRef.current.offsetHeight;
+      void wheelRef.current.offsetHeight;
       
       // Now apply the full rotation with transition
       wheelRef.current.style.transition = 'transform 3s cubic-bezier(0.23, 1, 0.32, 1)';
@@ -95,10 +95,10 @@ const SpinningWheel: React.FC<SpinningWheelProps> = ({ holidays }) => {
             }}
           >
             {/* labels positioned over their correct colors */}
-            <span className="wheel-label" style={{ transform: 'rotate(270deg) translate(0, min(-25%, -60px))', transformOrigin: 'center center' }}>
+            <span className="wheel-label" style={{ transform: 'rotate(270deg) translate(0, min(-25%, -60px))', transformOrigin: 'center center', color: holidays[0].color }}>
               {truncateText(holidays[0].name)}
             </span>
-            <span className="wheel-label" style={{ transform: 'rotate(90deg) translate(0, min(-25%, -60px))', transformOrigin: 'center center' }}>
+            <span className="wheel-label" style={{ transform: 'rotate(90deg) translate(0, min(-25%, -60px))', transformOrigin: 'center center', color: holidays[1].color }}>
               {truncateText(holidays[1].name)}
             </span>
           </div>
@@ -166,7 +166,8 @@ const SpinningWheel: React.FC<SpinningWheelProps> = ({ holidays }) => {
                 className="wheel-label-multi"
                 style={{
                   transform: `rotate(${middleAngle}deg) translate(0, min(-25%, -60px))`,
-                  transformOrigin: 'center center'
+                  transformOrigin: 'center center',
+                  color: holiday.color
                 }}
               >
                 {truncateText(holiday.name)}

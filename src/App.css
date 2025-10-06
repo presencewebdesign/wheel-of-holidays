@@ -399,15 +399,18 @@ body::after {
   top: 50%;
   left: 50%;
   transform-origin: center center;
-  color: #fff;
   font-weight: bold;
   font-size: 1.1rem;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 0 3px rgba(255, 255, 255, 0.8);
   white-space: nowrap;
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 4px 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
 /* Labels for multi-segment wheel */
@@ -416,16 +419,19 @@ body::after {
   top: 50%;
   left: 50%;
   transform-origin: center center;
-  color: #fff;
   font-weight: bold;
   font-size: 0.95rem;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 0 3px rgba(255, 255, 255, 0.8);
   white-space: nowrap;
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
   width: auto;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 3px 8px;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
 .wheel-controls {
@@ -613,19 +619,11 @@ body::after {
   .wheel-label {
     font-size: 1rem;
     font-weight: 800;
-    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
-    background: rgba(0, 0, 0, 0.3);
-    padding: 2px 8px;
-    border-radius: 4px;
   }
   
   .wheel-label-multi {
     font-size: 0.9rem;
     font-weight: 800;
-    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
-    background: rgba(0, 0, 0, 0.3);
-    padding: 2px 6px;
-    border-radius: 4px;
   }
 }
 
@@ -653,19 +651,11 @@ body::after {
   .wheel-label {
     font-size: 0.95rem;
     font-weight: 800;
-    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
-    background: rgba(0, 0, 0, 0.3);
-    padding: 2px 8px;
-    border-radius: 4px;
   }
   
   .wheel-label-multi {
     font-size: 0.8rem;
     font-weight: 800;
-    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
-    background: rgba(0, 0, 0, 0.3);
-    padding: 2px 6px;
-    border-radius: 4px;
   }
   
   .input-group {
@@ -707,21 +697,11 @@ body::after {
   .wheel-label {
     font-size: 0.85rem;
     font-weight: 900;
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9), 
-                 2px 2px 8px rgba(0, 0, 0, 0.7);
-    background: rgba(0, 0, 0, 0.4);
-    padding: 2px 6px;
-    border-radius: 3px;
   }
   
   .wheel-label-multi {
     font-size: 0.7rem;
     font-weight: 900;
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9),
-                 2px 2px 8px rgba(0, 0, 0, 0.7);
-    background: rgba(0, 0, 0, 0.4);
-    padding: 1px 4px;
-    border-radius: 3px;
   }
   
   .wheel-controls {

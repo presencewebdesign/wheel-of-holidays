@@ -2,6 +2,12 @@
 
 A fun, interactive holiday picker app built with React, Vite, and Firebase! Create a list of holidays and spin the wheel to randomly select one.
 
+## 🌐 Live Demo
+
+**[Try it out live!](https://holiday-picker-12345.web.app)** 🎉
+
+_Note: Replace the URL above with your actual Firebase Hosting URL after deployment_
+
 ## Features
 
 - 🎄 Add and remove holidays from your list
@@ -126,4 +132,5 @@ MIT License - feel free to use this project for your own holiday fun!
 ---
 
 🎄 Made with ❤️ for holiday fun! 🎄
+
 # wheel-of-holidays
