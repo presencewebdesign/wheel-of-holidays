@@ -1,6 +1,6 @@
 # 🎪 Holiday Picker Wheel 🎪
 
-A fun, interactive holiday picker app built with React, Vite, and Firebase! Create a list of holidays and spin the wheel to randomly select one.
+A fun, interactive holiday picker app built with React, Vite, and Firebase! Create a list of destinations and spin the wheel to randomly select your next holiday destination.
 
 ## 🌐 Live Demo
 
@@ -10,12 +10,14 @@ _Note: Replace the URL above with your actual Firebase Hosting URL after deploym
 
 ## Features
 
-- 🎄 Add and remove holidays from your list
-- 🎡 Beautiful animated spinning wheel
-- 🎯 Game show and holiday themed styling
-- 📱 Responsive design for mobile and desktop
-- 🔥 Firebase integration for data persistence
-- ⚡ Built with Vite for fast development
+- ✈️ Add and remove holiday destinations from your list
+- 🎡 Beautiful animated spinning wheel with dynamic segments
+- 🎯 Game show themed styling with beach vibes
+- 📱 Fully responsive design optimized for mobile and desktop
+- 🔥 Firebase Datastore integration for data persistence
+- ⚡ Built with Vite for lightning-fast development
+- 🎨 Dynamic text positioning with smart truncation
+- 🌊 Smooth animations and visual effects
 
 ## Getting Started
 
@@ -105,28 +107,61 @@ firebase deploy
 
 ## Usage
 
-1. **Add Holidays**: Enter holiday names in the text input and click "Add Holiday"
-2. **Remove Holidays**: Click the ✕ button next to any holiday to remove it
-3. **Spin the Wheel**: Once you have holidays added, click "Spin the Wheel!" to randomly select one
-4. **Reset**: Click "Reset Wheel" to spin again
+1. **Add Destinations**: Enter holiday destination names in the text input and click "Add Holiday"
+2. **Remove Destinations**: Click the ✕ button next to any destination to remove it
+3. **Spin the Wheel**: Once you have at least 2 destinations, click "🎯 Spin the Wheel!" to randomly select one
+4. **Reset**: Click "🔄 Reset Wheel" to spin again
+5. **Mobile Optimized**: Works perfectly on phones, tablets, and desktops with responsive text sizing
+
+### How It Works
+
+- The wheel dynamically adjusts based on the number of destinations you add
+- Text labels are intelligently positioned and sized for optimal readability
+- Each destination gets its own colorful segment on the wheel
+- The spinning animation includes multiple rotations for excitement
 
 ## Technologies Used
 
-- **React 18** with TypeScript
-- **Vite** for build tooling
-- **Firebase** for hosting and database
-- **CSS3** with animations and gradients
-- **React Suspense** for loading states
+- **React 18** with TypeScript for type safety
+- **Vite** for ultra-fast build tooling and HMR
+- **Firebase Datastore** for data persistence
+- **CSS3** with advanced animations, gradients, and responsive design
+- **React Suspense** for smooth loading states
+- **Mathematical positioning** using polar coordinates for precise label placement
+- **Dynamic styling** with responsive font sizes and mobile optimization
+
+## Recent Updates
+
+### Latest Improvements
+
+- ✅ **Mobile Text Clarity**: Fixed text visibility and readability on all screen sizes
+- ✅ **Dynamic Positioning**: Labels now automatically adjust based on number of destinations
+- ✅ **Smart Text Truncation**: Text length adapts to segment size for optimal display
+- ✅ **Responsive Design**: Enhanced mobile experience with proper font scaling
+- ✅ **Mathematical Precision**: Uses polar coordinates for perfect label positioning
+- ✅ **Visual Polish**: Improved contrast, shadows, and styling for better UX
+
+### Technical Enhancements
+
+- Polar coordinate system for accurate label positioning
+- Dynamic distance calculation based on segment count
+- Responsive font sizing across all breakpoints
+- Optimized transform calculations for smooth animations
+- Enhanced CSS with better mobile support
 
 ## Contributing
 
 1. Fork the repository
-2. Create a feature branch
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
 3. Make your changes
-4. Submit a pull request
+4. Commit your changes (`git commit -m 'Add amazing feature'`)
+5. Push to the branch (`git push origin feature/amazing-feature`)
+6. Open a Pull Request
 
 ## License
 
-MIT License - feel free to use this project for your own holiday fun!
+MIT License - feel free to use this project for your own holiday fun! 🎉
 
-# wheel-of-holidays
+---
+
+**Made with ❤️ for choosing your next adventure!** ✈️🏖️
