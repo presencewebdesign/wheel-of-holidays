@@ -1,4 +1,4 @@
-# 🎪 Holiday Picker Wheel 🎪
+# Wheel of Holidays
 
 A fun, interactive holiday picker app built with React, Vite, and Firebase! Create a list of destinations and spin the wheel to randomly select your next holiday destination.
 
