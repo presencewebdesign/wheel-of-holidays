@@ -156,23 +156,31 @@ body::after {
   backdrop-filter: blur(10px);
   border: 3px solid #fff;
   position: relative;
+  overflow: hidden;
 }
 .holiday-form::after {
   /* subtle animated shine */
   content: "";
   position: absolute;
-  top: 0; left: -30%;
-  width: 30%; height: 100%;
+  top: 0; 
+  left: 0;
+  width: 30%; 
+  height: 100%;
   background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.35), rgba(255,255,255,0));
-  transform: skewX(-12deg);
-  animation: panelShine 6s ease-in-out infinite;
+  transform: translateX(-100%) skewX(-12deg);
+  opacity: 0;
   pointer-events: none;
 }
 
+.holiday-form:hover::after {
+  animation: panelShine 1.2s ease-in-out;
+}
+
 @keyframes panelShine {
-  0%, 60% { transform: translateX(0) skewX(-12deg); opacity: 0; }
-  65% { opacity: 1; }
-  100% { transform: translateX(230%) skewX(-12deg); opacity: 0; }
+  0% { transform: translateX(-100%) skewX(-12deg); opacity: 0; }
+  30% { opacity: 1; }
+  70% { opacity: 1; }
+  100% { transform: translateX(400%) skewX(-12deg); opacity: 0; }
 }
 
 .form-title {
@@ -463,6 +471,8 @@ body::after {
   background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.5), rgba(255,255,255,0));
   transform: skewX(-20deg);
   transition: transform 0.3s ease;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .spin-button:hover:not(:disabled) {
