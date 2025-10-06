@@ -10,10 +10,40 @@ const SpinningWheel: React.FC<SpinningWheelProps> = ({ holidays }) => {
   const [selectedHoliday, setSelectedHoliday] = useState<Holiday | null>(null);
   const wheelRef = useRef<HTMLDivElement>(null);
 
-  // Truncate text to max 6 characters for display on wheel
-  const truncateText = (text: string, maxLength: number = 6): string => {
+  // Calculate max text length based on number of holidays
+  const getMaxTextLength = (holidayCount: number): number => {
+    if (holidayCount === 2) return 10;
+    if (holidayCount <= 4) return 8;
+    if (holidayCount <= 6) return 7;
+    if (holidayCount <= 8) return 6;
+    return 5;
+  };
+
+  // Truncate text based on holiday count for optimal display
+  const truncateText = (text: string, holidayCount: number): string => {
+    const maxLength = getMaxTextLength(holidayCount);
     if (text.length <= maxLength) return text;
-    return text.substring(0, maxLength) + '..';
+    return text.substring(0, maxLength - 2) + '..';
+  };
+
+  // Calculate optimal label position - keep it simple and visible
+  const getLabelPosition = (holidayCount: number, angle: number) => {
+    // Much closer to center to ensure visibility
+    let distance = 40; // Default 40% from center
+    if (holidayCount === 2) distance = 45;
+    else if (holidayCount <= 4) distance = 42;
+    else if (holidayCount <= 6) distance = 40;
+    else if (holidayCount <= 8) distance = 38;
+    
+    // Calculate position using polar coordinates
+    const radius = distance;
+    const angleRad = (angle * Math.PI) / 180;
+    
+    // Convert polar to cartesian (50% is center)
+    const x = 50 + radius * Math.sin(angleRad);
+    const y = 50 - radius * Math.cos(angleRad);
+    
+    return { x, y };
   };
 
   const spinWheel = () => {
@@ -94,13 +124,25 @@ const SpinningWheel: React.FC<SpinningWheelProps> = ({ holidays }) => {
               background: `conic-gradient(from 180deg, ${holidays[0].color} 0 50%, ${holidays[1].color} 50% 100%)`
             }}
           >
-            {/* labels positioned at the outer edge of their sections */}
-            <span className="wheel-label" style={{ transform: 'rotate(270deg) translate(0, min(-42%, -130px))', transformOrigin: 'center center', color: holidays[0].color }}>
-              {truncateText(holidays[0].name)}
-            </span>
-            <span className="wheel-label" style={{ transform: 'rotate(90deg) translate(0, min(-42%, -130px))', transformOrigin: 'center center', color: holidays[1].color }}>
-              {truncateText(holidays[1].name)}
-            </span>
+            {/* labels positioned at the outer edge of their sections - following radial direction */}
+            {[270, 90].map((angle, idx) => {
+              const pos = getLabelPosition(2, angle);
+              return (
+                <span 
+                  key={idx}
+                  className="wheel-label" 
+                  style={{ 
+                    left: `${pos.x}%`, 
+                    top: `${pos.y}%`,
+                    transform: 'translate(-50%, -50%)',
+                    color: '#2c3e50',
+                    fontWeight: 900 
+                  }}
+                >
+                  {truncateText(holidays[idx].name, 2)}
+                </span>
+              );
+            })}
           </div>
         </div>
 
@@ -159,18 +201,21 @@ const SpinningWheel: React.FC<SpinningWheelProps> = ({ holidays }) => {
             // Calculate the middle angle of each segment for label positioning
             // Since wheel starts from 180deg, adjust the angle calculation
             const middleAngle = 180 + (index * anglePerSegment) + (anglePerSegment / 2);
+            const pos = getLabelPosition(holidays.length, middleAngle);
             
             return (
               <span
                 key={holiday.id}
                 className="wheel-label-multi"
                 style={{
-                  transform: `rotate(${middleAngle}deg) translate(0, min(-42%, -130px))`,
-                  transformOrigin: 'center center',
-                  color: holiday.color
+                  left: `${pos.x}%`,
+                  top: `${pos.y}%`,
+                  transform: 'translate(-50%, -50%)',
+                  color: '#2c3e50',
+                  fontWeight: 900
                 }}
               >
-                {truncateText(holiday.name)}
+                {truncateText(holiday.name, holidays.length)}
               </span>
             );
           })}

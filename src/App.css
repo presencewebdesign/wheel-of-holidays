@@ -404,42 +404,33 @@ body::after {
 /* Labels for two-segment wheel */
 .wheel-label {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform-origin: center center;
-  font-weight: bold;
-  font-size: 1.1rem;
-  text-shadow: 0 0 3px rgba(255, 255, 255, 0.8);
+  font-weight: 900;
+  font-size: 1rem;
+  text-shadow: 0 0 4px rgba(255, 255, 255, 0.9), 0 0 8px rgba(255, 255, 255, 0.6);
   white-space: nowrap;
   text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(255, 255, 255, 0.9);
-  padding: 4px 10px;
-  border-radius: 5px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.95);
+  padding: 5px 11px;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  transform-origin: center center;
 }
 
 /* Labels for multi-segment wheel */
 .wheel-label-multi {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform-origin: center center;
-  font-weight: bold;
-  font-size: 0.95rem;
-  text-shadow: 0 0 3px rgba(255, 255, 255, 0.8);
+  font-weight: 900;
+  font-size: 0.85rem;
+  text-shadow: 0 0 4px rgba(255, 255, 255, 0.9), 0 0 8px rgba(255, 255, 255, 0.6);
   white-space: nowrap;
   text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: auto;
-  background: rgba(255, 255, 255, 0.9);
-  padding: 3px 8px;
-  border-radius: 4px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.95);
+  padding: 4px 9px;
+  border-radius: 5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  transform-origin: center center;
 }
 
 .wheel-controls {
@@ -627,13 +618,13 @@ body::after {
   }
   
   .wheel-label {
-    font-size: 1rem;
-    font-weight: 800;
+    font-size: 0.95rem;
+    padding: 4px 10px;
   }
   
   .wheel-label-multi {
-    font-size: 0.9rem;
-    font-weight: 800;
+    font-size: 0.8rem;
+    padding: 4px 8px;
   }
 }
 
@@ -659,13 +650,13 @@ body::after {
   }
   
   .wheel-label {
-    font-size: 0.95rem;
-    font-weight: 800;
+    font-size: 0.9rem;
+    padding: 4px 9px;
   }
   
   .wheel-label-multi {
-    font-size: 0.8rem;
-    font-weight: 800;
+    font-size: 0.75rem;
+    padding: 3px 8px;
   }
   
   .input-group {
@@ -695,6 +686,10 @@ body::after {
     font-size: 1.8rem;
   }
   
+  .app-header {
+    padding: 2rem 1rem;
+  }
+  
   .wheel-container {
     padding: 1rem;
   }
@@ -706,12 +701,12 @@ body::after {
   
   .wheel-label {
     font-size: 0.85rem;
-    font-weight: 900;
+    padding: 4px 8px;
   }
   
   .wheel-label-multi {
     font-size: 0.7rem;
-    font-weight: 900;
+    padding: 3px 7px;
   }
   
   .wheel-controls {
@@ -738,6 +733,37 @@ body::after {
   }
   
   .placeholder-instruction {
+    font-size: 1rem;
+  }
+}
+
+/* Extra Small Mobile (Very small phones) */
+@media (max-width: 360px) {
+  .app-title {
+    font-size: 1.6rem;
+  }
+  
+  .app-subtitle {
+    font-size: 1rem;
+  }
+  
+  .wheel {
+    width: min(92vw, 280px);
+    aspect-ratio: 1;
+  }
+  
+  .wheel-label {
+    font-size: 0.8rem;
+    padding: 3px 7px;
+  }
+  
+  .wheel-label-multi {
+    font-size: 0.65rem;
+    padding: 3px 6px;
+  }
+  
+  .spin-button {
+    padding: 0.9rem 1.3rem;
     font-size: 1rem;
   }
 }
